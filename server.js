@@ -6,6 +6,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
+
 // TODO: remove later if no helpers are needed
 // const helpers = require('./utils/helpers');
 
@@ -14,6 +15,7 @@ const PORT = process.env.PORT || 3001;
 
 const hbs = exphbs.create({ helpers });
 
+// TODO: update session cookie time if necessary
 const sesh = {
   secret: 'Secret sesh',
   cookie: {
