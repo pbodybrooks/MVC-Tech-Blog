@@ -20,11 +20,11 @@ Post.init(
             allowNull: false,
             defaultValue: DataTypes.NOW,
         },
-        user: {
+        user_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'user',
-                key: 'name',
+                key: 'id',
             },
         },
     },
@@ -34,7 +34,7 @@ Post.init(
         // timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'comment',
+        modelName: 'post',
     }
 );
 
