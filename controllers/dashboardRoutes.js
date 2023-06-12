@@ -34,6 +34,7 @@ router.get('/', withAuth, async (req, res) => {
         });
     })
     .catch((err) => {
+        console.log(err);
         res.status(500).json(err);
     });
 });
@@ -54,17 +55,32 @@ router.get('/new', withAuth, async (req, res) => {
 
 // dashboard route to edit post
 router.get('/edit/:id', withAuth, async (req, res) => {
-    try {
-        const postData = await Post.findByPk(req.params.id);
+    // try {
+    //     const postData = await Post.findByPk(req.params.id);
+    //     const post = postData.get({ plain: true });
+    //     res.render('edit-post', {
+    //         ...post,
+    //         loggedIn: req.session.loggedIn,
+    //     });
+    // } catch (err) {
+    //     console.log(err);
+    //     res.status(500).json(err);
+    // }
+    Post.findByPk(req.params.id)
+    .then((postData) => {
         const post = postData.get({ plain: true });
-        res.render('edit-post', {
-            ...post,
-            loggedIn: req.session.loggedIn,
+
+        res.render("editPost",  {
+            layout: 'dashboard',
+            post,
+            loggedIn: req.session.loggedIn
         });
-    } catch (err) {
+    })
+    .catch((err) => {
         console.log(err);
         res.status(500).json(err);
-    }
+    });
 });
+
 
 module.exports = router;
