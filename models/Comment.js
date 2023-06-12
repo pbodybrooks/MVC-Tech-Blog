@@ -20,8 +20,9 @@ Comment.init(
             allowNull: false,
             defaultValue: DataTypes.NOW,
         },
-        user_name: {
-            type: DataTypes.STRING,
+        // TODO: Update or add reference to user.name
+        user_id: {
+            type: DataTypes.INTEGER,
             references: {
                 model: 'user',
                 key: 'id',
