@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1",
+    "name": "BarryBigGains",
+    "email": "bigchungus@hotmail.com",
+    "password": "password123"
+  },
+  {
+    "id": "2",
+    "name": "Pbodybrooks",
+    "email": "parker@email.com",
+    "password": "password123"
+  },
+  {
+    "id": "3",
+    "name": "bootCampBarry",
+    "email": "barry@email.com",  
+    "password": "password123"
+  }
+]
