@@ -1,36 +1,24 @@
-<div class="singlePost">
-        <section class="post-section">
-            <div class="section-title">
-                <h2><a href="/post/{{id}}">{{title}}</a></h2>
-            </div>
-            <div class="section-body">
-                <p>{{body}}</p>
-            </div>      
-            <div class="post-data">
-                <p>By {{user_id}} on {{format_date date}}</p>
-            </div>    
-        </section>
+{{> postData post}}
 
-        {{if post.comments}}
-        <section="comments-section">
-            <h3 class="section-title">Comments</h3>
-            {{#each post.comments}}
-                <div class="comment">
-                    <p>{{body}}</p>
-                    <p>By {{User.name}} on {{format_date date}}</p>
-                </div>
-            {{/each}}
-        </section>
+{{#if loggedIn}}
+<form class="comment-form">
+    <div>
+        <textarea name="comment-body"></textarea>
+    </div>
 
-        <form class="comment-form">
-            <h3 class="section-title">Have something to add?</h3>
-            <div class="section-body">
-                <input type="hidden" name="post-id" value="{{post.id}}" />
-                <label class="form-label" for="comment-body">Comment</label>
-                <textarea name="comment-body" class="form-input"></textarea>
-                <button type="submit" class="btn">Post your comment</button>
-            </div>
-        </form>
-</div>
+    <div>
+        <button type="submit">Add Comment</button>
+    </div>
+</form>
+{{/if}}
 
-<script src="/javascript/comment.js"></script>
+{{> comment post.comments}}
+
+
+{{#if loggedIn}}
+<script src="/js/comment.js"></script>
+{{/if}}
+
+
+
+

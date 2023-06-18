@@ -1,67 +1,92 @@
 const router = require('express').Router();
 const { Comment, Post, User } = require('../models');
 
-// get all posts to be shown on homepage
-// router.get('/', async (req, res) => {
-//     try {
-//         const postData = await Post.findAll({
-//             include: [
-//                 {
-//                     model: User,
-//                     attributes: ['name'],
-//                 },
-//             ],
-//         });
-//         const posts = postData.map((post) => post.get({ plain: true }));
-//         res.render('homepage', {
-//             posts,
-//             loggedIn: req.session.loggedIn,
-//         });
-//     } catch (err) {
-//         console.log(err);
-//         res.status(500).json(err);
-//     }
-// });
-router.get('/', async (req, res) => {
-    Post.findAll({
-        include: [User],
-    })
-    .then((allPosts) => {
-        const posts = allPosts.map((post) => post.get({ plain: true }));
+// get all posts to be shown on homepage without needing to be logged in
+router.get('/', (req, res) => {
+  console.log(req.session);
+  Post.findAll({
+    attributes: [
+      'id',
+      'title',
+      'body',
+      'date',
+    ],
+    include: [
+      {
+        model: Comment,
+        attributes: ['id', 'body', 'date', 'user_id', 'post_id'],
+        include: {
+          model: User,
+          attributes: ['name']
+        }
+      },
+      {
+        model: User,
+        attributes: ['name']
+      }
+    ]
+  })
+    .then(postData => {
+      const posts = postData.map(post => post.get({ plain: true }));
+      // const userName = req.session.name;
 
-        res.render("allPosts",  { 
-            posts, 
-            loggedIn: req.session.loggedIn 
-        });
+      res.render('homepage', {
+        posts,
+        userName: req.session.name,
+        loggedIn: req.session.loggedIn
+      });
     })
-    .catch((err) => {
-        res.status(500).json(err);
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
     });
 });
 
 // get single post by id
-router.get('/post/:id', async (req, res) => {
-    try {
-        const postData = await Post.findByPk(req.params.id, {
-            include: [
-                User,
-                {
-                    model: Comment,
-                    include: [User],
-                    loggedIn: req.session.loggedIn
-                },
-            ],
-        });
+router.get('/post/:id', (req, res) => {
+    Post.findOne({
+      where: {
+        id: req.params.id
+      },
+      attributes: [
+        'id',
+        'title',
+        'body',
+        'date',
+      ],
+      include: [
+        {
+          model: Comment,
+          attributes: ['id', 'body', 'date', 'user_id', 'post_id'],
+          include: {
+            model: User,
+            attributes: ['name']
+          }
+        },
+        {
+          model: User,
+          attributes: ['name']
+        }
+      ]
+    })
+      .then(postData => {
+        if (!postData) {
+          res.status(404).json({ message: 'Post not found!' });
+          return;
+        }
+  
         const post = postData.get({ plain: true });
+  
         res.render('singlePost', {
-            ...post,
-            loggedIn: req.session.loggedIn,
+          post,
+          loggedIn: req.session.loggedIn
         });
-    } catch (err) {
+      })
+      .catch(err => {
         console.log(err);
         res.status(500).json(err);
-    }
-});
+      });
+  });
 
 // register route, if logged in redirect to homepage/dashboard
 router.get('/signup', (req, res) => {
@@ -76,7 +101,7 @@ router.get('/signup', (req, res) => {
 // login page
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
-        res.redirect('/');
+        res.redirect('/dashboard');
         return;
     }
     res.render('login');

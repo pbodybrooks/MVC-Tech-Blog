@@ -1,0 +1,29 @@
+<section>
+  <h2>Create A New Post</h2>
+
+  <form class="post-form">
+    <div>
+      <label for="post-title">Post Title</label>
+      <input type="text" id="post-title" name="post-title" />
+    </div>
+
+    <div>
+      <label for="post-body">Post Body</label>
+      <textarea id="post-body" name="post-body"></textarea>
+    </div>
+
+    <button type="submit" class="btn">Create Post</button>
+  </form>
+</section>
+
+{{#if posts.length}}
+<section>
+  <h2>{{addPossessiveSuffix posts.[0].user.name}} Post History</h2>
+
+    {{#each posts as |post|}}
+      {{> postData post}}
+    {{/each}}
+</section>
+{{/if}}
+
+<script src="/js/post.js"></script>

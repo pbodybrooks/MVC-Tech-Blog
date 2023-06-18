@@ -48,8 +48,6 @@ User.init(
             },
         },
         sequelize,
-        // TODO: confirm timestamps interaction with DataTypes.DATE/.NOW
-        // timestamps: false,
         freezeTableName: true,
         underscored: true,
         modelName: 'user',

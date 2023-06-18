@@ -1,0 +1,13 @@
+<article class="post-card">
+    <div class="post">
+        <a href="/post/{{id}}" class="post-title">{{title}}</a><br>
+        <span class="user-id"> {{user.name}} - {{format_date_day_of_week date}}</span> 
+        <p class="post-body">{{body}}</p>
+    </div>
+    <div class="details">
+        <a href="/post/{{id}}"> {{comments.length}} {{format_plural "comment" comments.length}}</a>
+    </div>
+    <div>
+        <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
+    </div>
+</article>

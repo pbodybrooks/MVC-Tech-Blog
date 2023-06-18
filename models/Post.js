@@ -24,7 +24,6 @@ Post.init(
             allowNull: false,
             defaultValue: DataTypes.NOW,
         },
-        // TODO: Update or add reference to user.name
         user_id: {
             type: DataTypes.INTEGER,
             references: {
@@ -35,8 +34,6 @@ Post.init(
     },
     {
         sequelize,
-        // TODO: confirm timestamps interaction with DataTypes.DATE/.NOW
-        // timestamps: false,
         freezeTableName: true,
         underscored: true,
         modelName: 'post',
