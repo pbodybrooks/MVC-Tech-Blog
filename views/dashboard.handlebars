@@ -1,9 +1,14 @@
-<section>
-  <h2>Create A New Post</h2>
+<div>
+    {{#if loggedIn}}
+        <p class="welcome">Welcome, {{userName}}!</p>
+    {{/if}}
+</div>
 
+<article id="new-post">
+  <h2>Create A New Post</h2>
   <form class="post-form">
     <div>
-      <label for="post-title">Post Title</label>
+      <label for="post-title-label">Post Title</label>
       <input type="text" id="post-title" name="post-title" />
     </div>
 
@@ -14,15 +19,14 @@
 
     <button type="submit" class="btn">Create Post</button>
   </form>
-</section>
+</article>
 
 {{#if posts.length}}
 <section>
-  <h2>{{addPossessiveSuffix posts.[0].user.name}} Post History</h2>
-
-    {{#each posts as |post|}}
-      {{> postData post}}
-    {{/each}}
+  <h2 id="post-history">{{addPossessiveSuffix userName}} Post History</h2>
+  {{#each posts as |post|}}
+    {{> postData post}}
+  {{/each}}
 </section>
 {{/if}}
 

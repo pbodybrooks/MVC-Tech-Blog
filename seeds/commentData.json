@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "body": "Gains are good for me - great post!",
+        "user_id": 2,
+        "post_id": 1
+    },
+    {
+        "id": 2,
+        "body": "I love this post!",
+        "user_id": 3,
+        "post_id": 1
+    },
+    {
+        "id": 3,
+        "body": "Super helpful cause I'm burning out big time!",
+        "user_id": 3,
+        "post_id": 2
+    },
+    {
+        "id": 4,
+        "body": "I'm going to try this!",
+        "user_id": 2,
+        "post_id": 3
+    },
+    {
+        "id": 5,
+        "body": "Glad I know why MVC is so important now!",
+        "user_id": 2,
+        "post_id": 4
+    },
+    {
+        "id": 6,
+        "body": "Wow. Fascinating.",
+        "user_id": 3,
+        "post_id": 4
+    }
+]

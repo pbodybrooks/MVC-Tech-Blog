@@ -3,7 +3,6 @@ const { Comment, Post, User } = require('../models');
 
 // get all posts to be shown on homepage without needing to be logged in
 router.get('/', (req, res) => {
-  console.log(req.session);
   Post.findAll({
     attributes: [
       'id',
@@ -28,7 +27,6 @@ router.get('/', (req, res) => {
   })
     .then(postData => {
       const posts = postData.map(post => post.get({ plain: true }));
-      // const userName = req.session.name;
 
       res.render('homepage', {
         posts,

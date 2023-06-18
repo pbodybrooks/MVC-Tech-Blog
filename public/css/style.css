@@ -1,3 +1,7 @@
+:root {
+    --primary: #5e35b1;
+}
+
 body {
     background-color: var(--oldBlack);
 
@@ -41,5 +45,78 @@ h1 {
 
 .welcome {
     font-size: 2rem;
-    margin: 5%;
+    margin: 2%;
 }
+
+.details {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+article {
+    margin: 0 2%;
+}
+
+.post-card {
+    margin-bottom: 1%;
+}
+
+.post-title {
+    font-size: 1.7rem;
+    margin-bottom: 5px;
+}
+
+.post-body {
+    font-size: 1rem;
+    margin-top: 20px;
+}
+
+.comment-details {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+#post-history {
+    margin: 0 2%;
+    margin-bottom: 1%;
+}
+
+#new-post {
+    margin: 0 2%;
+    padding: 2%;
+    margin-bottom: 1.5%;
+}
+
+#new-post label {
+    font-size: 1.2rem;;
+}
+
+#new-post h2 {
+    font-size: 2rem;
+    margin: 0 0 1% 0;
+}
+
+.comment-card {
+    margin-bottom: 1%;
+}
+
+.comment-form {
+    margin: 0 2%;
+    margin-bottom: 1.5%;
+}
+
+#mainCard {
+    margin: 0 2%;
+}
+
+.signup-form{
+    margin: 0 2%;
+}
+
+.btn {
+    
+}
+
+
+
+

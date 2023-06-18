@@ -19,7 +19,8 @@
                         <li><a href="/dashboard/">My Dashboard</a></li>
                         <li><a href="#" id="logout-btn">Logout</a></li>
                     {{else}}
-                        <li><a href="/dashboard/">Dashboard</a></li>
+                        <li><a href="/">Homepage</a></li>
+                        <li><a href="/dashboard/">My Dashboard</a></li>
                         <li><a href="/login">Login</a></li> 
                     {{/if}}
                 </ul>
@@ -27,13 +28,6 @@
         </header>
         
         <main>
-            <div>
-                {{#if loggedIn}}
-                    <p class="welcome">Welcome, {{userName}}!</p>
-                {{else}}
-                    <p class="welcome">Welcome, please login to post or comment.</p>
-                {{/if}}
-            </div>
             <div>
                 {{{ body }}}
             </div>

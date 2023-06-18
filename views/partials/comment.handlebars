@@ -1,12 +1,12 @@
-<div class="comment-section">
+<section class="comment-section">
     {{#each this}}
-    <section class="comment-card">
-        <div class="details">
+    <article class="comment-card">
+        <div class="comment-details">
             <span>by {{user.name}} on {{format_date_day_of_week date}}</span>
         </div>
         <div class="comment-body">
             {{body}}
         </div>
-    </section>
+    </article>
     {{/each}}
-</div>
+</section>
