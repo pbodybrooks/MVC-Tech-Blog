@@ -15,7 +15,7 @@ The Tech Blog For Tech Bros is a place where users can share their thoughts and 
 * [Questions](#questions)
 
 ## Screenshot
-![Screenshot of app.](/public/assets/screenshot.png)
+![Screenshot of app.](/public/assets/screenshot1.png)
 
 ## Installation 
 N/A
