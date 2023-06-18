@@ -38,3 +38,8 @@ h1 {
 .comment {
     margin: 5%;
 }
+
+.welcome {
+    font-size: 2rem;
+    margin: 5%;
+}
